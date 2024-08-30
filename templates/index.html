@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Screenshot Generator</title>
+</head>
+<body>
+    <h1>Website Screenshot Generator</h1>
+    <form method="post">
+        <label for="url">Website URL:</label>
+        <input type="text" id="url" name="url" required><br><br>
+        <label for="device">Device:</label>
+        <select id="device" name="device" required>
+            <option value="desktop">Desktop</option>
+            <option value="mobile">Mobile</option>
+        </select><br><br>
+        <label for="full_page">Screenshot Type:</label>
+        <input type="radio" id="visible" name="full_page" value="visible" required> Visible Page
+        <input type="radio" id="full" name="full_page" value="full_page" required> Full Page<br><br>
+        <input type="submit" value="Generate Screenshot">
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
